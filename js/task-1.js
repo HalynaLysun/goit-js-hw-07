@@ -1,12 +1,10 @@
 'use strict'
 
-const itemEl = document.querySelectorAll('.item')
-console.log(`Number of categories: ${itemEl.length}`)
-
-const textEl = document.querySelectorAll("h2")
-textEl.forEach(element => {
-
-    console.log(`Category: ${element.textContent}`)
-    console.log(`Elements: ${element.length}`)
-
+const items = document.querySelectorAll(".item")
+console.log(`Number of categories: ${items.length}`)
+items.forEach(item => {
+    const titles = item.querySelector('h2')
+    console.log(`Category: ${titles.textContent}`)
+    const list = item.querySelectorAll('li')
+    console.log(`Elements: ${list.length}`)
 })

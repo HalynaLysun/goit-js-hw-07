@@ -29,3 +29,12 @@ const images = [
     alt: 'Zebras on Zebra',
   },
 ];
+
+const gallery = document.querySelector('ul')
+console.log(gallery)
+
+images.forEach(elem => {
+  gallery.insertAdjacentHTML("afterbegin", `<li><img src="${elem.url}" style="max-width: 300px; max-height: 200px;" alt="${elem.alt}"></img></li>`)
+})
+
+ 
