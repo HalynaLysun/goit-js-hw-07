@@ -4,26 +4,45 @@ const inputEl = document.querySelector('input')
 const pressEl = document.querySelector('button[data-create]')
 const buttonEl = document.querySelector('button[data-destroy]')
 const divEl = document.querySelector('#boxes')
-console.log(inputEl)
-console.log(pressEl)
-console.log(buttonEl)
-console.log(divEl)
+// console.log(inputEl)
+// console.log(pressEl)
+// console.log(buttonEl)
+// console.log(divEl)
 
-function clickHandler() {
-  if (inputEl.textContent <= 100) {
-    // divEl.insertAdjacentHTML('afterBegin', `<div class='box' style='width: 30px; height: 30px; backgroundcolor: green'></div>`)
-    // divEl.style.height = '30px';
-    // divEl.style.backgroundColor = getRandomHexColor()
-    let amount = inputEl.textContent
-     function createBoxes(amount) {
-      divEl.insertAdjacentHTML('afterbegin', `div.box*${amount}+enter`)
-    }
+    
+function clickHandler(event) {
+  event.preventDefault()
 
-     createBoxes(amount)
+  if (inputEl.value.trim() <= 100) {
+    divEl.innerHTML = `<div class='box'></div>`
+    const divBox = document.querySelector('.box')
+    divBox.style.backgroundColor = getRandomHexColor()
+    divBox.style.width = '30px'
+    divBox.style.height = '30px'
+
+    inputEl.reset()
+
+
+
+    // let amount = Number(inputEl.value.trim())
+
+    //    function createBoxes(amount) {
+    //   divEl.createElement(div)
+    // }
+
+    //    createBoxes(amount)
+    // }
   }
 }
 
-// спробувати через стилі діва поставити дісплей флекс, перенос і ширину через калькулятор з використання емаунт - 1 та емаунт
+pressEl.addEventListener('click', clickHandler)
+
+function destroyBoxes(event) {
+  divEl.reset()
+}
+
+buttonEl.addEventListener('click', destroyBoxes)
+
 
 
   
@@ -34,4 +53,5 @@ function getRandomHexColor() {
     .padStart(6, 0)}`;
 }
 
-pressEl.addEventListener('click', clickHandler)
+
+// спробувати через стилі діва поставити дісплей флекс, перенос і ширину через калькулятор з використання емаунт - 1 та емаунт
