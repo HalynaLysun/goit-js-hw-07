@@ -1,52 +1,37 @@
 'use strict'
 
-const inputEl = document.querySelector('input')
-const pressEl = document.querySelector('button[data-create]')
-const buttonEl = document.querySelector('button[data-destroy]')
-const divEl = document.querySelector('#boxes')
-// console.log(inputEl)
-// console.log(pressEl)
-// console.log(buttonEl)
-// console.log(divEl)
+const refs = {
+  amountEl: document.querySelector('#controls input'),
+  createEl: document.querySelector('button[data-create]'),
+  destroyEl: document.querySelector('button[data-destroy]'),
+  boxesEl: document.querySelector('#boxes'),
+};
 
-    
-function clickHandler(event) {
-  event.preventDefault()
-
-  if (inputEl.value.trim() <= 100) {
-    divEl.innerHTML = `<div class='box'></div>`
-    const divBox = document.querySelector('.box')
-    divBox.style.backgroundColor = getRandomHexColor()
-    divBox.style.width = '30px'
-    divBox.style.height = '30px'
-
-    inputEl.reset()
-
-
-
-    // let amount = Number(inputEl.value.trim())
-
-    //    function createBoxes(amount) {
-    //   divEl.createElement(div)
-    // }
-
-    //    createBoxes(amount)
-    // }
+refs.createEl.addEventListener('click', onCreateClick);
+refs.destroyEl.addEventListener('click', onDestroyClick);
+function onCreateClick() {
+  let amount = refs.amountEl.value;
+  if (amount < 1 || amount > 100) {
+    return alert(
+      'Ooops, something go wrong!!! The value must be less than 100'
+    );
+  }
+  onDestroyClick();
+  createBoxes(amount);
+}
+function onDestroyClick() {
+  refs.boxesEl.innerHTML = '';
+  refs.amountEl.value = '';
+}
+function createBoxes(amount) {
+  for (let i = 0; i < amount; i++) {
+    let elem = document.createElement('div');
+    elem.style.width = 30 + 10 * i + 'px';
+    elem.style.height = 30 + 10 * i + 'px';
+    elem.style.backgroundColor = getRandomHexColor();
+    refs.boxesEl.append(elem);
   }
 }
-
-pressEl.addEventListener('click', clickHandler)
-
-function destroyBoxes(event) {
-  divEl.reset()
-}
-
-buttonEl.addEventListener('click', destroyBoxes)
-
-
-
-  
-
 function getRandomHexColor() {
   return `#${Math.floor(Math.random() * 16777215)
     .toString(16)
@@ -54,4 +39,3 @@ function getRandomHexColor() {
 }
 
 
-// спробувати через стилі діва поставити дісплей флекс, перенос і ширину через калькулятор з використання емаунт - 1 та емаунт
