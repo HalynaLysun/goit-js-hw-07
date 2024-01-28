@@ -23,5 +23,10 @@ body {
   flex-wrap: wrap;
 }
 
+.gallery-img {
+  max-width: 400px;
+  min-height: 280px;
+}
+
 
 

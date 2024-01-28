@@ -1,12 +1,13 @@
 'use strict'
 
 const bodyEl = document.querySelector('body')
-const pressEl = document.querySelector('button')
-const spanEl = document.querySelector('span')
+const pressEl = document.querySelector('.change-color')
+const spanEl = document.querySelector('.color')
 
-function clickHandler (event) {
-  bodyEl.style.backgroundColor = getRandomHexColor()
-  spanEl.textContent = getRandomHexColor()
+function clickHandler(event) {
+  const color = getRandomHexColor()
+  bodyEl.style.backgroundColor = color
+  spanEl.textContent = color
 }
 
 function getRandomHexColor() {
