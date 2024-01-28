@@ -30,10 +30,14 @@ const images = [
   },
 ];
 
+
 const gallery = document.querySelector(".gallery")
 
-images.forEach(elem => {
-  gallery.insertAdjacentHTML("beforeend", `<li><img class="gallery-img" src="${elem.url}" alt="${elem.alt}"></img></li>`)
-})
+const items = images
+.map(elem => 
+   `<li><img class="gallery-img" src="${elem.url}" alt="${elem.alt}"></img></li>`
+)
+.join("")
 
- 
+gallery.insertAdjacentHTML('beforeend', items)
+
